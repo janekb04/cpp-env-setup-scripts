@@ -10,7 +10,7 @@ function Initialize-Tool {
     }
     else {
         Write-Host "${ToolName}: Not Found... Installing"
-        & "$ScriptPath/Install$ToolName.ps1"
+        & "$ScriptPath/Install-$ToolName.ps1"
     }
 }
 
