@@ -16,7 +16,7 @@ $ExeName = (New-Object System.Net.WebClient).DownloadString("https://repo.msys2.
 
 # Run MSYS2 installer using auto install script
 Write-Host "Installing..."
-& "$scriptPath\temp\msys2-installer.exe" --platform minimal --script "$scriptPath\temp\msys2_auto_install.js" -v InstallDir=$InstallLocation
+Start-Process "$scriptPath\temp\msys2-installer.exe" "--platform minimal --script $scriptPath\temp\msys2_auto_install.js InstallDir=$InstallLocation" -NoNewWindow -Wait
 
 # Update MSYS 2 packages
 & "$InstallLocation\usr\bin\bash.exe" -l -c "pacman -Syu"
