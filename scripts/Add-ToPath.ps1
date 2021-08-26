@@ -1,22 +1,18 @@
 param(
     [Parameter(Position = 0)]
-    [System.String]$VariableSet,
+    [System.EnvironmentVariableTarget]$VariableTarget,
     [Parameter(Position = 1)]
     [System.String[]]$Items
 )
 
 # Construct PATH string
-$NewPath = "%path%"
+$NewPath = [Environment]::GetEnvironmentVariable("Path", $VariableTarget)  
+
+Write-Host $NewPath
+
 foreach ($item in $Items) {
     $NewPath += ";$item"
 }
 
 # Change PATH variable
-switch ($VariableSet) {
-    'user' { 
-        setx path $NewPath
-    }
-    'system' {
-        setx path $NewPath /m
-    }
-}
+[Environment]::SetEnvironmentVariable("Path", $NewPath, $VariableTarget)  

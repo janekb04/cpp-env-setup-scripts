@@ -24,5 +24,5 @@ $ExeName = (Invoke-WebRequest "https://repo.msys2.org/distrib/x86_64/").Content 
 & "$InstallLocation\usr\bin\bash.exe" -l -c "pacman -S --needed base-devel mingw-w64-x86_64-toolchain"
 
 # Add MinGW64 to PATH
-& "$ScriptPath\Add-ToPath.ps1" -VariableSet System -Items "$InstallDir\mingw64\bin"
+& "$ScriptPath\Add-ToPath.ps1" -VariableTarget Machine -Items "$InstallDir\mingw64\bin"
 
