@@ -5,10 +5,12 @@ $InstallLocation = "C:\Program Files\CMake"
 & "$ScriptPath\Create-Install-Location.ps1" $InstallLocation
 
 # Download the latest CMake release zip from GitHub
+Write-Host "Downloading..."
 $latestReleaseTag = (& "$scriptPath\Find-GitHub-Latest-Release.ps1" "Kitware" "CMake") -replace 'v', ''
 (New-Object System.Net.WebClient).DownloadFile("https://github.com/Kitware/CMake/releases/download/v$latestReleaseTag/cmake-$latestReleaseTag-windows-x86_64.zip", "$scriptPath\temp\cmake.zip")
 
 # Extract downloaded zip archive
+Write-Host "Installing..."
 Add-Type -Assembly "System.IO.Compression.Filesystem"
 [System.IO.Compression.ZipFile]::ExtractToDirectory("$scriptPath\temp\cmake.zip", "$scriptPath\temp")
 
@@ -20,3 +22,5 @@ if (-not $?) {
 
 # Add CMake to PATH
 & "$ScriptPath\Add-ToPath.ps1" -VariableTarget Machine -Items "$InstallLocation\bin"
+
+Write-Host "Installation Done"

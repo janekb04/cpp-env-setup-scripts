@@ -8,8 +8,6 @@ param(
 # Construct PATH string
 $NewPath = [Environment]::GetEnvironmentVariable("Path", $VariableTarget)  
 
-Write-Host $NewPath
-
 foreach ($item in $Items) {
     $NewPath += ";$item"
 }
