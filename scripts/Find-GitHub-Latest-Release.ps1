@@ -5,4 +5,6 @@ param(
     [System.String]$Repository
 )
 
-((Invoke-WebRequest -URI "https://github.com/$User/$Repository/releases/latest" -Headers @{"Accept" = "application/json" }).Content | ConvertFrom-Json).tag_name
+$WebClient = New-Object System.Net.WebClient
+$WebClient.Headers.add('accept','application/json')
+($WebClient.DownloadString("https://github.com/$User/$Repository/releases/latest") | ConvertFrom-Json).tag_name
