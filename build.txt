@@ -1,0 +1,14 @@
+Platform: Windows; Linux; macOS; Android; iOS; Emscripten;
+Subtype: 
+	Windows: Native; UWP; ARM
+	Linux: x86; ARM
+	macOS: binary; package; m1/x86
+	Android: ???
+	iOS: ???
+	Emscripten: probably none
+Optimization: Debug; Release;
+Compiler: GCC; Clang; MSVC; Emscripten;
+
+IDE support: Visual Studio, Clion, VS Code, XCode
+
+CMakePresets.json
