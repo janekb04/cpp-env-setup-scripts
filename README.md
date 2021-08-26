@@ -1,0 +1,1 @@
+A collection of scripts used to automatically install tools needed to work with C++. This process can usually be complex and long, so I found automating it useful.
