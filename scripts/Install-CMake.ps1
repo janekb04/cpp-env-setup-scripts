@@ -22,5 +22,3 @@ if (-not $?) {
 
 # Add CMake to PATH
 & "$ScriptPath\Add-ToPath.ps1" -VariableTarget Machine -Items "$InstallLocation\bin"
-
-Write-Host "Installation Done"

@@ -27,6 +27,3 @@ Start-Process "$scriptPath\temp\msys2-installer.exe" "--platform minimal --scrip
 
 # Add MinGW64 to PATH
 & "$ScriptPath\Add-ToPath.ps1" -VariableTarget Machine -Items "$InstallLocation\mingw64\bin"
-
-Write-Host "Installation done"
-
