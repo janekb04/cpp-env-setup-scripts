@@ -5,7 +5,7 @@ function Initialize-Tool {
         [System.String]$ToolName
     )
 
-    if (& "$ScriptPath/CheckCommandExists.ps1" $ToolName) {
+    if (& "$ScriptPath/Check-Command-Exists.ps1" $ToolName) {
         Write-Host "${ToolName}: Found"
     }
     else {
