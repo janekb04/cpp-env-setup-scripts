@@ -1,12 +1,13 @@
 param(
     [Parameter(Position = 0)]
-    [ValidateSet('user', 'system')]
-    [System.String]$VariableSet
+    [System.String]$VariableSet,
+    [Parameter(Position = 1)]
+    [System.String[]]$Items
 )
 
 # Construct PATH string
 $NewPath = "%path%"
-foreach ($item in $args) {
+foreach ($item in $Items) {
     $NewPath += ";$item"
 }
 
