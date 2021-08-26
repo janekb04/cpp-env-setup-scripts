@@ -1,15 +1,18 @@
+param(
+    [Parameter(Position = 0)]
+    [System.Boolean]$ExcludeFromDefender = $false
+)
+
 $ScriptPath = split-path -parent $MyInvocation.MyCommand.Definition
 
-$wantToExcludeFromDefender = $false
-
-if ($wantToExcludeFromDefender) {
-    $runningAsAdmin = New-Object Security.Principal.WindowsPrincipal([Security.Principal.WindowsIdentity]::GetCurrent()).IsInRole([Security.Principal.WindowsBuiltInRole]::Administrator)
-    if (-not $runningAsAdmin) {
+if ($ExcludeFromDefender) {
+    $RunningAsAdmin = New-Object Security.Principal.WindowsPrincipal([Security.Principal.WindowsIdentity]::GetCurrent()).IsInRole([Security.Principal.WindowsBuiltInRole]::Administrator)
+    if (-not $RunningAsAdmin) {
         Write-Host "To exclude the folder from Windows Defender, this script requires administrator privilages"
         Exit 1
     }
 
-    Add-MpPreference -ExclusionPath . # security tradeoff for better performance
+    Add-MpPreference -ExclusionPath $ScriptPath # security tradeoff for better performance
 }
 
-& "$ScriptPath\tools\Setup.ps1"
+& "$ScriptPath\scripts\Setup.ps1"

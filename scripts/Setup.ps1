@@ -2,7 +2,7 @@ $ScriptPath = Split-Path -Parent $MyInvocation.MyCommand.Definition
 
 function Initialize-Tool {
     param (
-        [string]$ToolName
+        [System.String]$ToolName
     )
 
     if ("$ScriptPath/Check$ToolName.ps1") {
