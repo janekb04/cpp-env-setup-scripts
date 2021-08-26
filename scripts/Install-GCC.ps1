@@ -19,11 +19,11 @@ Write-Host "Installing..."
 Start-Process "$scriptPath\temp\msys2-installer.exe" "--platform minimal --script $scriptPath\temp\msys2_auto_install.js InstallDir=$InstallLocation" -NoNewWindow -Wait
 
 # Update MSYS 2 packages
-& "$InstallLocation\usr\bin\bash.exe" -l -c "pacman -Syu --noconfirm" | Out-Null
-& "$InstallLocation\usr\bin\bash.exe" -l -c "pacman -Su --noconfirm" | Out-Null
+& "$InstallLocation\usr\bin\bash.exe" -l -c "pacman -Syu --noconfirm" 2> $null | Out-Null
+& "$InstallLocation\usr\bin\bash.exe" -l -c "pacman -Su --noconfirm" 2> $null | Out-Null
 
 # Install MinGW64
-& "$InstallLocation\usr\bin\bash.exe" -l -c "pacman -S --noconfirm --needed base-devel mingw-w64-x86_64-toolchain" | Out-Null
+& "$InstallLocation\usr\bin\bash.exe" -l -c "pacman -S --noconfirm --needed base-devel mingw-w64-x86_64-toolchain" 2> $null | Out-Null
 
 # Add MinGW64 to PATH
 & "$ScriptPath\Add-ToPath.ps1" -VariableTarget Machine -Items "$InstallLocation\mingw64\bin"

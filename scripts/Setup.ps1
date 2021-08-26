@@ -10,7 +10,7 @@ function Initialize-Tool {
     }
     else {
         # Install missing tool
-        Write-Host "${ToolName}: Not Found... Installing"
+        Write-Host "${ToolName}: Not Found... Installing" -ForegroundColor Yellow
         & "$ScriptPath/Install-$ToolName.ps1"
 
         # Reload PATH
@@ -18,16 +18,12 @@ function Initialize-Tool {
 
         # Check if installation succeded
         if (& "$ScriptPath/Check-Command-Exists.ps1" $ToolName) {
-            Write-Host "Installation succeded" -ForegroundColor Green
+            Write-Host "$ToolName installation succeded" -ForegroundColor Green
         }
         else {
-            Write-Host "Installation failed" -ForegroundColor Red
+            Write-Host "$ToolName installation failed" -ForegroundColor Red
         }
     }
-
-
-    
-Write-Host "Installation Done"
 }
 
 # Create Temporary Directory
