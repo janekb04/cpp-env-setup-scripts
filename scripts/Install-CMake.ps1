@@ -6,7 +6,7 @@ $InstallLocation = "C:\Program Files\CMake"
 
 # Download the latest CMake release zip from GitHub
 $latestReleaseTag = (& "$scriptPath\Find-GitHub-Latest-Release.ps1" "Kitware" "CMake") -replace 'v', ''
-(new-object System.Net.WebClient).DownloadFile("https://github.com/Kitware/CMake/releases/download/v$latestReleaseTag/cmake-$latestReleaseTag-windows-x86_64.zip", "$scriptPath\temp\cmake.zip")
+(New-Object System.Net.WebClient).DownloadFile("https://github.com/Kitware/CMake/releases/download/v$latestReleaseTag/cmake-$latestReleaseTag-windows-x86_64.zip", "$scriptPath\temp\cmake.zip")
 
 # Extract downloaded zip archive
 Add-Type -Assembly "System.IO.Compression.Filesystem"

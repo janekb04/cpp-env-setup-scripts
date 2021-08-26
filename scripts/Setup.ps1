@@ -14,8 +14,8 @@ function Initialize-Tool {
     }
 }
 
-Initialize-Tool -ToolName CMake
-Initialize-Tool -ToolName GCC
-
 # Create Temporary Directory
 New-Item -ItemType Directory -Force -Path "$ScriptPath/temp" | Out-Null
+
+Initialize-Tool -ToolName CMake
+Initialize-Tool -ToolName GCC
